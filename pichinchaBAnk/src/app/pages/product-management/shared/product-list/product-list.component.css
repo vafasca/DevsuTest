@@ -14,19 +14,15 @@
     margin-bottom: 20px;
   }
   
-  .search-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
+
   
-  .search-input {
+  /* .search-input {
     width: 200px;
     padding: 5px;
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 5px;
-  }
+  } */
   
   .product-table {
     width: 80%; /* Reduce table width to 80% */
@@ -71,8 +67,4 @@
     margin: 0 auto;
   }
   
-  /* Search bar alignment */
-  .search-container {
-    float: left;
-  }
   

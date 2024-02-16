@@ -1,10 +1,10 @@
 //interface en angular para estos datos: identificacion
 //nombre y edad.
-export interface Persona{
-    id:number;
+export interface Product{
+    id:string;
     nombre:string;
     descripcion: string;
     logo: string;
-    fechaLiberacion: Date;
-    fechaRevision: Date;
+    fechaLiberacion: string;
+    fechaRevision: string;
 }
