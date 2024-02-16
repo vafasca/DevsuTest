@@ -2,9 +2,9 @@
 //nombre y edad.
 export interface Product{
     id:string;
-    nombre:string;
-    descripcion: string;
+    name:string;
+    description: string;
     logo: string;
-    fechaLiberacion: string;
-    fechaRevision: string;
+    date_release: string;
+    date_revision: string;
 }

@@ -1,0 +1,8 @@
+.input-design{
+    outline: none;
+    border: 0;
+    justify-self: start;
+    border: solid 1.5px rgb(196, 194, 194);
+    padding: 7px 3px;
+    border-radius: 5px;
+  }

@@ -1,6 +1,13 @@
-<div class="form-container">
-    <img src="https://actoressostenibles.com/wp-content/uploads/2019/08/Logos-6-10-08.png" alt="Logo" class="logo">
-    <app-search-product></app-search-product>
+<div>
+  <div class="form-container">
+    <img
+      src="https://actoressostenibles.com/wp-content/uploads/2019/08/Logos-6-10-08.png"
+      alt="Logo"
+      class="logo"
+    />
+  </div>
+  <app-search-product></app-search-product>
+  <div class="form-container">
     <table class="product-table">
       <thead>
         <tr>
@@ -9,25 +16,28 @@
           <th>Descripción</th>
           <th>Fecha de liberación</th>
           <th>Fecha de revisión</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let product of productList">
-          <td><img src="product1-logo.png" alt=""></td>
-          <td>{{product.id}}</td>
-          <td>{{product.descripcion}}</td>
-          <td>{{product.fechaLiberacion}}</td>
-          <td>{{product.fechaRevision}}</td>
+        <tr *ngFor="let product of displayedProducts">
+          <td><img src= "" alt="" /></td>
+          <td>{{ product.id }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.date_release }}</td>
+          <td>{{ product.date_revision }}</td>
+          <td id="actions">:</td>
         </tr>
-        </tbody>
+      </tbody>
     </table>
-    <br>
+    <br />
     <div class="button-container">
       <button class="button">Boton 1</button>
-      <select class="button">
-        <option value="1">5</option>
-        <option value="2">10</option>
-        <option value="3">20</option>
+      <select class="button" [(ngModel)]="selectedValue" (change)="onValueChange($event)">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
       </select>
     </div>
   </div>
+</div>
