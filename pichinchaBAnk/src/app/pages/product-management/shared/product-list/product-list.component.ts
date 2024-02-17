@@ -19,7 +19,10 @@ export class ProductListComponent implements OnInit {
   selectedProductTitle: string = '';
   activeDropdown: Product | null = null;
 
-  constructor(private productListSvc: ProductApiService, private router: Router) {
+  constructor(
+    private productListSvc: ProductApiService,
+    private router: Router
+  ) {
     this.products = [];
     this.selectedValue = 5;
     this.displayedProducts = [];
@@ -64,7 +67,10 @@ export class ProductListComponent implements OnInit {
   }
 
   private updateDisplayedProducts(): void {
-    this.displayedProducts = this.products.slice(this.currentIndex, this.currentIndex + this.selectedValue);
+    this.displayedProducts = this.products.slice(
+      this.currentIndex,
+      this.currentIndex + this.selectedValue
+    );
   }
 
   showPrevious() {
@@ -73,7 +79,7 @@ export class ProductListComponent implements OnInit {
       this.updateDisplayedProducts();
     }
   }
-  
+
   showNext() {
     if (this.currentIndex + this.selectedValue < this.products.length) {
       this.currentIndex += this.selectedValue;
@@ -95,19 +101,32 @@ export class ProductListComponent implements OnInit {
     this.router.navigate(['products/registration', product.id]);
   }
 
-//modals
-openModal(product: Product) {
-  this.selectedProductTitle = product.name;
-  this.isModalOpen = true;
-}
-
+  //modals
+  openModal(product: Product) {
+    this.selectedProductTitle = product.name;
+    this.isModalOpen = true;
+  }
 
   closeModal() {
     this.isModalOpen = false;
   }
 
   deleteProduct() {
-    this.closeModal();
+    if (this.activeDropdown) {
+      this.productListSvc
+        .deleteProduct(this.activeDropdown.id)
+        .pipe(
+          take(1),
+          catchError((error) => this.handleError(error))
+        )
+        .subscribe(
+          () => {
+            this.getProductList();
+            this.closeModal();
+          },
+          (error) => console.error('An error occurred:', error)
+        );
+    }
   }
 
   // Función para manejar errores
@@ -115,5 +134,4 @@ openModal(product: Product) {
     console.error('An error occurred:', error);
     return throwError('Something bad happened; please try again later.');
   }
-
 }
