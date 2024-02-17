@@ -5,7 +5,8 @@ import { RegistrationFormComponent } from './shared/registration-form/registrati
 
 const routes: Routes = [
 { path: '', component: ProductManagementComponent },
-{ path: 'registration', component: RegistrationFormComponent }];
+{ path: 'registration', component: RegistrationFormComponent },
+{ path: 'registration/:id', component: RegistrationFormComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

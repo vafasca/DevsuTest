@@ -85,7 +85,7 @@ export class ProductListComponent implements OnInit {
 
   editProduct(product: Product) {
     console.log(JSON.stringify(product));
-    this.router.navigate(['/edit-product', product.id]);
+    this.router.navigate(['products/registration', product.id]);
   }
 
 //modals

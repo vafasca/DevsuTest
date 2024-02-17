@@ -2,19 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* background-color: #f2f2f2; */
-  /* padding: 20px; */
-  /* border-radius: 5px; */
-  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 }
-
-/* .search-input {
-    width: 200px;
-    padding: 5px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  } */
 
 .product-table {
   width: 100%;
@@ -30,26 +18,14 @@
 
 .product-table tr {
   border-bottom: solid 0.5px rgb(196, 194, 194, 0.6);
-  /* border: solid 1.5px rgb(0, 0, 0); */
 }
 
 .product-table td {
   padding: 15px 0px;
 }
 
-/* .product-table th,
-.product-table td {
-  padding: 10px;
-  border: 1px solid #ccc;
-  text-align: left;
-}
-
-.product-table th {
-  background-color: #ddd;
-} */
-
 .button {
-  margin: 0; /* Remove default margin */
+  margin: 0;
   padding: 10px 20px;
   font-size: 14px;
   background-color: #4caf50;
@@ -65,12 +41,8 @@
 
 .button-container {
   display: flex;
-  justify-content: space-between; /* Horizontally align buttons */
-  margin-top: 20px; /* Add margin between table and buttons */
-}
-
-/* Center buttons below table */
-.button-container {
+  justify-content: space-between;
+  margin-top: 20px;
   width: 80%;
   margin: 0 auto;
 }
@@ -80,7 +52,6 @@
   cursor: pointer;
 }
 
-/* Estilos del modal */
 .modal {
   display: none;
   position: fixed;
@@ -133,7 +104,45 @@
   color: #000000;
 }
 
-/* Clase para mostrar el modal */
 .show {
   display: block;
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 120px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 5px;
+}
+
+.dropdown-content button {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+}
+
+.dropdown-content button:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
 }
