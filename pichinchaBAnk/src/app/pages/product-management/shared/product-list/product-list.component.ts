@@ -13,6 +13,7 @@ export class ProductListComponent implements OnInit {
     products: Product[];
     selectedValue: number;
     displayedProducts: Product[];
+    filteredProducts: Product[];
 
   constructor(
     private productListSvc: ProductApiService
@@ -20,6 +21,7 @@ export class ProductListComponent implements OnInit {
     this.products = [];
     this.selectedValue = 5;
     this.displayedProducts = [];
+    this.filteredProducts = [];
    }
 
   ngOnInit(): void {
@@ -32,6 +34,16 @@ export class ProductListComponent implements OnInit {
   }
   
 
+  onSearch(term: string) {
+    if (term.trim() === '') {
+      this.displayedProducts = [...this.products.slice(0, this.selectedValue)];
+    } else {
+      this.filteredProducts = this.products.filter(product =>
+        product.name.toLowerCase().includes(term.toLowerCase()) || product.description.toLowerCase().includes(term.toLowerCase())
+      );
+      this.displayedProducts = [...this.filteredProducts.slice(0, this.selectedValue)];
+    }
+  }
   private getProductList(): void {
     this.productListSvc
       .getProducts()
@@ -40,7 +52,7 @@ export class ProductListComponent implements OnInit {
         this.products = productList;
         this.updateDisplayedProducts();
         console.log(productList);
-      });
+      }, error => console.error('An error occurred:', error));
   }
 
   // Función para manejar errores

@@ -11,7 +11,7 @@ export class SearchProductComponent implements OnInit {
   searchTerm: string = '';
 
   onSearch() {
-    this.search.emit(this.searchTerm);
+    this.search.emit(this.searchTerm.trim());
     console.log(this.searchTerm);
   }
 

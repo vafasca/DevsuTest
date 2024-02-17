@@ -1,13 +1,6 @@
-<div>
-  <div class="form-container">
-    <img
-      src="https://actoressostenibles.com/wp-content/uploads/2019/08/Logos-6-10-08.png"
-      alt="Logo"
-      class="logo"
-    />
-  </div>
-  <app-search-product></app-search-product>
-  <div class="form-container">
+<div class="container">
+  <app-search-product (search)="onSearch($event)"></app-search-product>
+  <div>
     <table class="product-table">
       <thead>
         <tr>
@@ -22,7 +15,7 @@
       <tbody>
         <tr *ngFor="let product of displayedProducts">
           <td><img src= "" alt="" /></td>
-          <td>{{ product.id }}</td>
+          <td>{{ product.name }}</td>
           <td>{{ product.description }}</td>
           <td>{{ product.date_release }}</td>
           <td>{{ product.date_revision }}</td>

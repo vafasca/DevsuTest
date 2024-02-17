@@ -10,13 +10,19 @@ export class ProductApiService {
 
   private apiURI!: string;
 
-  constructor(
-    private http: HttpClient
-  ) {
+  constructor(private http: HttpClient) {
     this.apiURI = 'https://my-json-server.typicode.com/vafasca/bp/products';
    }
 
-   getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.apiURI);
+   public getPath():string{
+    return '/vafasca/bp/products'
+   }
+
+getUrl(): string {
+return `https://my-json-server.typicode.com/${this.getPath()}`
+}
+
+  public getProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.getUrl());
   }
 }
