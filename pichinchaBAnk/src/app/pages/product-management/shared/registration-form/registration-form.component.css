@@ -1,0 +1,52 @@
+/* Estilos de los campos */
+.campo {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.campo label {
+    width: 120px;
+    margin-right: 20px;
+}
+
+.campo input,
+.campo textarea,
+.campo select {
+    flex: 1;
+}
+
+/* Estilos de los botones */
+.botones {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.botones button {
+    border: 1px solid #ccc;
+    padding: 8px 16px;
+    margin: 0 10px;
+}
+
+.reiniciar {
+    background-color: #fff;
+}
+
+.enviar {
+    background-color: yellow;
+}
+
+/* Estilos del formulario */
+.formulario {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 500px;
+    margin: 0 auto; /* Centrar el formulario horizontalmente */
+    text-align: center; /* Centrar el texto dentro del formulario */
+}
+
+h1 {
+    /* Estilos del título */
+    margin-top: 0; /* Eliminar el margen superior predeterminado */
+    margin-bottom: 20px; /* Agregar margen inferior */
+}

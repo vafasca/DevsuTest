@@ -6,13 +6,15 @@ import { ProductManagementComponent } from './product-management.component';
 import { ProductListComponent } from './shared/product-list/product-list.component';
 import { SearchProductComponent } from './shared/search-product/search-product.component';
 import { FormsModule } from '@angular/forms';
+import { RegistrationFormComponent } from './shared/registration-form/registration-form.component';
 
 
 @NgModule({
   declarations: [
     ProductManagementComponent,
     ProductListComponent,
-    SearchProductComponent
+    SearchProductComponent,
+    RegistrationFormComponent
   ],
   imports: [
     CommonModule,
