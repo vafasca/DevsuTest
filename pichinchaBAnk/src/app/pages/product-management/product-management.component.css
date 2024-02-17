@@ -1,7 +1,7 @@
 /* Estilos para el logo */
 .logo {
   display: block;
-  margin: 0 auto; /* Centrar horizontalmente */
+  margin: 20px auto 10px; /* Margen superior de 20px, margen inferior de 10px, centrado horizontalmente */
   max-width: 200px; /* Tamaño máximo */
   height: auto; /* Altura automática para mantener la proporción */
 }

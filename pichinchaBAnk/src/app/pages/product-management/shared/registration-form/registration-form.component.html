@@ -1,28 +1,50 @@
-<div class="container">
-        <div class="formulario">
-            <h1>Formulario de Registro</h1>
-            <hr>
-            <div class="campo">
-                <label for="id">ID:</label>
-                <input type="text" id="id" name="id">
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre">
-            </div>
-            <div class="campo">
-                <label for="descripcion">Descripción:</label>
-                <input id="descripcion" name="descripcion">
-                <label for="logo">Logo:</label>
-                <input type="input" id="logo" name="logo">
-            </div>
-            <div class="campo">
-                <label for="fecha_liberacion">Fecha de Liberación:</label>
-                <input type="date" id="fecha_liberacion" name="fecha_liberacion">
-                <label for="fecha_revision">Fecha de Revisión:</label>
-                <input type="date" id="fecha_revision" name="fecha_revision">
-            </div>
-            <div class="botones">
-                <button type="button" class="reiniciar">Reiniciar</button>
-                <button type="submit" class="enviar">Enviar</button>
-            </div>
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <div class="container">
+      <div class="formulario">
+        <h1>Formulario de Registro</h1>
+        <hr>
+        <div class="campo">
+          <label for="id">ID:</label>
+          <input type="text" id="id" formControlName="id">
+          <div *ngIf="registrationForm.controls['id'].invalid && registrationForm.controls['id'].touched" class="error">
+            ID no válido!
+          </div>
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" formControlName="nombre">
+          <div *ngIf="registrationForm.controls['nombre'].invalid && registrationForm.controls['nombre'].touched" class="error">
+            Nombre no válido!
+          </div>
         </div>
+        <div class="campo">
+          <label for="descripcion">Descripción:</label>
+          <input id="descripcion" formControlName="descripcion">
+          <div *ngIf="registrationForm.controls['descripcion'].invalid && registrationForm.controls['descripcion'].touched" class="error">
+            Descripción no válida!
+          </div>
+          <label for="logo">Logo:</label>
+          <input type="input" id="logo" formControlName="logo">
+          <div *ngIf="registrationForm.controls['logo'].invalid && registrationForm.controls['logo'].touched" class="error">
+            Logo no válido!
+          </div>
+        </div>
+        <div class="campo">
+          <label for="fecha_liberacion">Fecha de Liberación:</label>
+          <input type="date" id="fecha_liberacion" formControlName="fecha_liberacion">
+          <div *ngIf="registrationForm.controls['fecha_liberacion'].invalid && registrationForm.controls['fecha_liberacion'].touched" class="error">
+            Fecha de liberación no válida!
+          </div>
+          <label for="fecha_revision">Fecha de Revisión:</label>
+          <input type="date" id="fecha_revision" formControlName="fecha_revision">
+          <div *ngIf="registrationForm.controls['fecha_revision'].invalid && registrationForm.controls['fecha_revision'].touched" class="error">
+            Fecha de revisión no válida!
+          </div>
+        </div>
+        <div class="botones">
+          <button type="button" class="reiniciar" (click)="registrationForm.reset()">Reiniciar</button>
+          <button type="submit" class="enviar" [disabled]="!registrationForm.valid">Enviar</button>
+
+        </div>
+      </div>
     </div>
+  </form>
+  
