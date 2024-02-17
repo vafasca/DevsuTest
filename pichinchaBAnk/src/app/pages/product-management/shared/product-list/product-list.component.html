@@ -25,7 +25,9 @@
     </table>
     <br />
     <div class="button-container">
-      <button class="button">Boton 1</button>
+      <label>Resultados: {{ displayedProducts.length }}</label>
+      <button class="button" (click)="showPrevious()">Anterior</button>
+      <button class="button" (click)="showNext()">Siguiente</button>
       <select class="button" [(ngModel)]="selectedValue" (change)="onValueChange($event)">
         <option value="5">5</option>
         <option value="10">10</option>
