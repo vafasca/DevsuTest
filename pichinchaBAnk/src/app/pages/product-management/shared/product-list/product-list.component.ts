@@ -17,6 +17,7 @@ export class ProductListComponent implements OnInit {
   currentIndex: number;
   isModalOpen: boolean = false;
   selectedProductTitle: string = '';
+  activeDropdown: Product | null = null;
 
   constructor(private productListSvc: ProductApiService, private router: Router) {
     this.products = [];
@@ -48,6 +49,7 @@ export class ProductListComponent implements OnInit {
       ];
     }
   }
+
   private getProductList(): void {
     this.productListSvc
       .getProducts()
@@ -80,7 +82,12 @@ export class ProductListComponent implements OnInit {
   }
 
   toggleDropdown(product: Product) {
+    if (this.activeDropdown) {
+      this.activeDropdown.showDropdown = false;
+    }
+
     product.showDropdown = !product.showDropdown;
+    this.activeDropdown = product.showDropdown ? product : null;
   }
 
   editProduct(product: Product) {
