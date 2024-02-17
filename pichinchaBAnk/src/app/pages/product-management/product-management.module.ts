@@ -7,6 +7,7 @@ import { ProductListComponent } from './shared/product-list/product-list.compone
 import { SearchProductComponent } from './shared/search-product/search-product.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistrationFormComponent } from './shared/registration-form/registration-form.component';
+import { HeaderComponent } from 'src/app/shared/header/header.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { RegistrationFormComponent } from './shared/registration-form/registrati
     ProductManagementComponent,
     ProductListComponent,
     SearchProductComponent,
-    RegistrationFormComponent
+    RegistrationFormComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,
