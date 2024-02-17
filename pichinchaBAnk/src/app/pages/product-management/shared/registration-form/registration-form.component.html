@@ -17,11 +17,11 @@
           ID no válido!
         </div>
         <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" formControlName="nombre" />
+        <input type="text" id="nombre" formControlName="name" />
         <div
           *ngIf="
-            registrationForm.controls['nombre'].invalid &&
-            registrationForm.controls['nombre'].touched
+            registrationForm.controls['name'].invalid &&
+            registrationForm.controls['name'].touched
           "
           class="error"
         >
@@ -30,11 +30,11 @@
       </div>
       <div class="campo">
         <label for="descripcion">Descripción:</label>
-        <input id="descripcion" formControlName="descripcion" />
+        <input id="descripcion" formControlName="description" />
         <div
           *ngIf="
-            registrationForm.controls['descripcion'].invalid &&
-            registrationForm.controls['descripcion'].touched
+            registrationForm.controls['description'].invalid &&
+            registrationForm.controls['description'].touched
           "
           class="error"
         >
@@ -53,31 +53,31 @@
         </div>
       </div>
       <div class="campo">
-        <label for="fecha_liberacion">Fecha de Liberación:</label>
+        <label for="date_release">Fecha de Liberación:</label>
         <input
           type="date"
           id="fecha_liberacion"
-          formControlName="fecha_liberacion"
+          formControlName="date_release"
         />
         <div
           *ngIf="
-            registrationForm.controls['fecha_liberacion'].invalid &&
-            registrationForm.controls['fecha_liberacion'].touched
+            registrationForm.controls['date_release'].invalid &&
+            registrationForm.controls['date_release'].touched
           "
           class="error"
         >
           Fecha de liberación no válida!
         </div>
-        <label for="fecha_revision">Fecha de Revisión:</label>
+        <label for="date_revision">Fecha de Revisión:</label>
         <input
           type="date"
           id="fecha_revision"
-          formControlName="fecha_revision"
+          formControlName="date_revision"
         />
         <div
           *ngIf="
-            registrationForm.controls['fecha_revision'].invalid &&
-            registrationForm.controls['fecha_revision'].touched
+            registrationForm.controls['date_revision'].invalid &&
+            registrationForm.controls['date_revision'].touched
           "
           class="error"
         >

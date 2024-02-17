@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { ProductApiService } from '../../services/product-api.service';
 import { Product } from '../../interfaces/product.interface';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration-form',
@@ -12,30 +13,42 @@ export class RegistrationFormComponent implements OnInit {
 
   registrationForm!: FormGroup;
 
-  constructor(private productListSvc: ProductApiService ) { }
+  productId!: string;
+
+  constructor(private productListSvc: ProductApiService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      console.log("id"+this.productId);
+      this.productId = params['id'] as string;
+      console.log("id"+this.productId);
+      //this.productId="trj-crd25"
+      if (this.productId) {
+        this.getProductDetails(this.productId.toString());
+      }
+    });
+
     this.registrationForm = new FormGroup({
       'id': new FormControl(null, [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(10),
       ]),
-      'nombre': new FormControl(null, [
+      'name': new FormControl(null, [
         Validators.required,
         Validators.minLength(5),
         Validators.maxLength(100)
       ]),
-      'descripcion': new FormControl(null, [
+      'description': new FormControl(null, [
         Validators.required,
         Validators.minLength(10),
         Validators.maxLength(200)
       ]),
       'logo': new FormControl(null, Validators.required),
-      'fecha_liberacion': new FormControl(null, [
+      'date_release': new FormControl(null, [
         Validators.required,
       ]),
-      'fecha_revision': new FormControl(null, [
+      'date_revision': new FormControl(null, [
         Validators.required,
       ])
     });
@@ -45,33 +58,60 @@ export class RegistrationFormComponent implements OnInit {
     return this.registrationForm.get('id');
   }
 
-  get nombre() {
-    return this.registrationForm.get('nombre');
+  get name() {
+    return this.registrationForm.get('name');
   }
 
-  get descripcion() {
-    return this.registrationForm.get('descripcion');
+  get description() {
+    return this.registrationForm.get('description');
   }
 
   get logo() {
     return this.registrationForm.get('logo');
   }
 
-  get fecha_liberacion() {
-    return this.registrationForm.get('fecha_liberacion');
+  get date_release() {
+    return this.registrationForm.get('date_release');
   }
 
-  get fecha_revision() {
-    return this.registrationForm.get('fecha_revision');
+  get date_revision() {
+    return this.registrationForm.get('date_revision');
   }
 
-  onSubmit() {
-    this.productListSvc.postProduct(this.registrationForm.value).subscribe(
+  getProductDetails(productId: string) {
+    console.log("ejecitasdadasddddano");
+    console.log(productId);
+    // No es necesario convertir a cadena, productId ya es un número
+    this.productListSvc.getProduct(productId.toString()).subscribe(
       (product: Product) => {
-        console.log(product);
+        this.registrationForm.patchValue(product); // Llena el formulario con los detalles del producto
       },
       (error) => console.error('An error occurred:', error)
     );
   }
+
+
+  onSubmit() {
+    if (this.productId) {
+      this.productListSvc.updateProduct(this.productId.toString(), this.registrationForm.value).subscribe(
+        (product: Product) => {
+          console.log(product);
+          alert("Producto actualizado correctamente");
+          this.router.navigate(['/products']);
+        },
+        (error) => console.error('An error occurred:', error)
+      );
+    } else {
+      this.productListSvc.postProduct(this.registrationForm.value).subscribe(
+        (product: Product) => {
+          console.log(product);
+          alert("Producto agregado correctamente");
+          this.router.navigate(['/products']);
+        },
+        (error) => console.error('An error occurred:', error)
+      );
+    }
+  }
+  
 
 }

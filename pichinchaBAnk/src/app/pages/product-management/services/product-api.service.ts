@@ -10,19 +10,24 @@ export class ProductApiService {
   private apiURI!: string;
 
   constructor(private http: HttpClient) {
-    this.apiURI = 'https://my-json-server.typicode.com/vafasca/bp/products';
+    this.apiURI = 'http://localhost:3000/products';
+    //http://localhost:3000/products
   }
 
   public getPath(): string {
-    return '/vafasca/bp/products';
+    return '/products';
   }
 
   getUrl(): string {
-    return `https://my-json-server.typicode.com/${this.getPath()}`;
+    return `http://localhost:3000${this.getPath()}`;
   }
 
   public getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.getUrl());
+  }
+
+  public getProduct(id: string): Observable<Product> {
+    return this.http.get<Product>(`${this.apiURI}/${id}`);
   }
 
   public postProduct(product: Product): Observable<Product> {
@@ -30,10 +35,10 @@ export class ProductApiService {
   }
 
   public deleteProduct(id: string): Observable<Product> {
-    return this.http.delete<Product>(`this.getUrl()/${id}`);
+    return this.http.delete<Product>(this.getUrl()+`/${id}`);
   }
 
   public updateProduct(id: string, product: Product): Observable<Product> {
-    return this.http.put<Product>(`this.getUrl()/${id}`, product);
+    return this.http.put<Product>(this.getUrl()+`/${id}`, product);
   }
 }

@@ -1,0 +1,204 @@
+{
+  "products": [
+    {
+      "id": "trj-crd1",
+      "name": "Tarjetas de Credito 1",
+      "description": "Tarjeta de consumo bajo la modalidad de credito 1",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logo_of_Twitter.svg/512px-Logo_of_Twitter.svg.png",
+      "date_release": "2023-03-01T00:00:00.000+00:00",
+      "date_revision": "2024-03-01T00:00:00.000+00:00"
+    },
+    {
+      "id": "trj-crd2",
+      "name": "Tarjetas de Credito 2",
+      "description": "Tarjeta de consumo bajo la modalidad de credito 2",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logo_of_Twitter.svg/512px-Logo_of_Twitter.svg.png",
+      "date_release": "2023-04-01T00:00:00.000+00:00",
+      "date_revision": "2024-04-01T00:00:00.000+00:00"
+    },
+    {
+      "id": "trj-crd3",
+      "name": "Tarjetas de Credito 3",
+      "description": "Tarjeta de consumo bajo la modalidad de credito 3",
+      "logo": "url_del_logo_3",
+      "date_release": "2023-05-01T00:00:00.000+00:00",
+      "date_revision": "2024-05-01T00:00:00.000+00:00"
+    },
+    {
+      "id": "trj-crd4",
+      "name": "Tarjetas de Credito 4",
+      "description": "Tarjeta de consumo bajo la modalidad de credito 4",
+      "logo": "url_del_logo_4",
+      "date_release": "2023-06-01T00:00:00.000+00:00",
+      "date_revision": "2024-06-01T00:00:00.000+00:00"
+    },
+    {
+      "id": "trj-crd5",
+      "name": "Tarjetas de Credito 5",
+      "description": "Tarjeta de consumo bajo la modalidad de credito 5",
+      "logo": "url_del_logo_5",
+      "date_release": "2023-07-01T00:00:00.000+00:00",
+      "date_revision": "2024-07-01T00:00:00.000+00:00"
+    },
+    {
+      "id": "trj-crd6",
+      "name": "Tarjetas de Credito 6",
+      "description": "Tarjeta de consumo bajo la modalidad de credito 6",
+      "logo": "url_del_logo_6",
+      "date_release": "2023-08-01T00:00:00.000+00:00",
+      "date_revision": "2024-08-01T00:00:00.000+00:00"
+    },
+    {
+      "id": "trj-crd7",
+      "name": "Tarjetas de Credito 7",
+      "description": "Tarjeta de consumo bajo la modalidad de credito 7",
+      "logo": "url_del_logo_7",
+      "date_release": "2023-09-01T00:00:00.000+00:00",
+      "date_revision": "2024-09-01T00:00:00.000+00:00"
+    },
+    {
+      "id": "trj-crd8",
+      "name": "Tarjetas de Credito 8",
+      "description": "Tarjeta de consumo bajo la modalidad de credito 8",
+      "logo": "url_del_logo_8",
+      "date_release": "2023-10-01T00:00:00.000+00:00",
+      "date_revision": "2024-10-01T00:00:00.000+00:00"
+    },
+    {
+      "id": "trj-crd9",
+      "name": "Tarjetas de Credito 9",
+      "description": "Tarjeta de consumo bajo la modalidad de credito 9",
+      "logo": "url_del_logo_9",
+      "date_release": "2023-11-01T00:00:00.000+00:00",
+      "date_revision": "2024-11-01T00:00:00.000+00:00"
+    },
+    {
+      "id": "trj-crd10",
+      "name": "Tarjetas de Credito 10",
+      "description": "Tarjeta de consumo bajo la modalidad de credito 10",
+      "logo": "url_del_logo_10",
+      "date_release": "2023-12-01T00:00:00.000+00:00",
+      "date_revision": "2024-12-01T00:00:00.000+00:00"
+    },
+    {
+      "id": "trj-crd11",
+      "name": "Tarjetas de Credito 11",
+      "description": "Tarjeta de consumo bajo la modalidad de credito 11",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logo_of_Twitter.svg/512px-Logo_of_Twitter.svg.png",
+      "date_release": "2023-03-01T00:00:00.000+00:00",
+      "date_revision": "2024-03-01T00:00:00.000+00:00"
+    },
+    {
+      "id": "trj-crd12",
+      "name": "Tarjetas de Credito 12",
+      "description": "Tarjeta de consumo bajo la modalidad de credito 12",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logo_of_Twitter.svg/512px-Logo_of_Twitter.svg.png",
+      "date_release": "2023-04-01T00:00:00.000+00:00",
+      "date_revision": "2024-04-01T00:00:00.000+00:00"
+    },
+    {
+      "id": "trj-crd13",
+      "name": "Tarjetas de Credito 13",
+      "description": "Tarjeta de consumo bajo la modalidad de credito 13",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logo_of_Twitter.svg/512px-Logo_of_Twitter.svg.png",
+      "date_release": "2023-03-01T00:00:00.000+00:00",
+      "date_revision": "2024-03-01T00:00:00.000+00:00"
+    },
+    {
+      "id": "trj-crd14",
+      "name": "Tarjetas de Credito 14",
+      "description": "Tarjeta de consumo bajo la modalidad de credito 14",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logo_of_Twitter.svg/512px-Logo_of_Twitter.svg.png",
+      "date_release": "2023-04-01T00:00:00.000+00:00",
+      "date_revision": "2024-04-01T00:00:00.000+00:00"
+    },
+    {
+      "id": "trj-crd15",
+      "name": "Tarjetas de Credito 15",
+      "description": "Tarjeta de consumo bajo la modalidad de credito 15",
+      "logo": "url_del_logo_3",
+      "date_release": "2023-05-01T00:00:00.000+00:00",
+      "date_revision": "2024-05-01T00:00:00.000+00:00"
+    },
+    {
+      "id": "trj-crd16",
+      "name": "Tarjetas de Credito 16",
+      "description": "Tarjeta de consumo bajo la modalidad de credito 16",
+      "logo": "url_del_logo_4",
+      "date_release": "2023-06-01T00:00:00.000+00:00",
+      "date_revision": "2024-06-01T00:00:00.000+00:00"
+    },
+    {
+      "id": "trj-crd17",
+      "name": "Tarjetas de Credito 17",
+      "description": "Tarjeta de consumo bajo la modalidad de credito 17",
+      "logo": "url_del_logo_5",
+      "date_release": "2023-07-01T00:00:00.000+00:00",
+      "date_revision": "2024-07-01T00:00:00.000+00:00"
+    },
+    {
+      "id": "trj-crd18",
+      "name": "Tarjetas de Credito 18",
+      "description": "Tarjeta de consumo bajo la modalidad de credito 18",
+      "logo": "url_del_logo_6",
+      "date_release": "2023-08-01T00:00:00.000+00:00",
+      "date_revision": "2024-08-01T00:00:00.000+00:00"
+    },
+    {
+      "id": "trj-crd19",
+      "name": "Tarjetas de Credito 19",
+      "description": "Tarjeta de consumo bajo la modalidad de credito 19",
+      "logo": "url_del_logo_7",
+      "date_release": "2023-09-01T00:00:00.000+00:00",
+      "date_revision": "2024-09-01T00:00:00.000+00:00"
+    },
+    {
+      "id": "trj-crd20",
+      "name": "Tarjetas de Credito 20",
+      "description": "Tarjeta de consumo bajo la modalidad de credito 20",
+      "logo": "url_del_logo_8",
+      "date_release": "2023-10-01T00:00:00.000+00:00",
+      "date_revision": "2024-10-01T00:00:00.000+00:00"
+    },
+    {
+      "id": "trj-crd21",
+      "name": "Tarjetas de Credito 21",
+      "description": "Tarjeta de consumo bajo la modalidad de credito 21",
+      "logo": "url_del_logo_9",
+      "date_release": "2023-11-01T00:00:00.000+00:00",
+      "date_revision": "2024-11-01T00:00:00.000+00:00"
+    },
+    {
+      "id": "trj-crd22",
+      "name": "Tarjetas de Credito 22",
+      "description": "Tarjeta de consumo bajo la modalidad de credito 22",
+      "logo": "url_del_logo_22",
+      "date_release": "2023-12-01T00:00:00.000+00:00",
+      "date_revision": "2024-12-01T00:00:00.000+00:00"
+    },
+    {
+      "id": "trj-crd23",
+      "name": "Tarjetas de Credito 23",
+      "description": "Tarjeta de consumo bajo la modalidad de credito 23",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logo_of_Twitter.svg/512px-Logo_of_Twitter.svg.png",
+      "date_release": "2023-03-01T00:00:00.000+00:00",
+      "date_revision": "2024-03-01T00:00:00.000+00:00"
+    },
+    {
+      "id": "trj-crd24",
+      "name": "Tarjetas de Credito 24",
+      "description": "Tarjeta de consumo bajo la modalidad de credito 24",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logo_of_Twitter.svg/512px-Logo_of_Twitter.svg.png",
+      "date_release": "2023-04-01T00:00:00.000+00:00",
+      "date_revision": "2024-04-01T00:00:00.000+00:00"
+    },
+    {
+      "id": "trj-crd25",
+      "name": "Tarjetas de Credito 25",
+      "description": "Tarjeta de consumo bajo la modalidad de credito 25",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logo_of_Twitter.svg/512px-Logo_of_Twitter.svg.png",
+      "date_release": "2024-02-09",
+      "date_revision": "2024-02-12"
+    }
+  ]
+}

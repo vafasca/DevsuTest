@@ -98,7 +98,8 @@ export class ProductListComponent implements OnInit {
 
   editProduct(product: Product) {
     console.log(JSON.stringify(product));
-    this.router.navigate(['products/registration', product.id]);
+    this.router.navigate(['products', 'registration', product.id]);
+    console.log("idddddddddedit"+JSON.stringify(product.id));
   }
 
   //modals
@@ -123,6 +124,7 @@ export class ProductListComponent implements OnInit {
           () => {
             this.getProductList();
             this.closeModal();
+            alert("Product eliminado correctamente");
           },
           (error) => console.error('An error occurred:', error)
         );
