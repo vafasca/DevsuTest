@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
+import { ProductApiService } from '../../services/product-api.service';
+import { Product } from '../../interfaces/product.interface';
 
 @Component({
   selector: 'app-registration-form',
@@ -10,7 +12,7 @@ export class RegistrationFormComponent implements OnInit {
 
   registrationForm!: FormGroup;
 
-  constructor() { }
+  constructor(private productListSvc: ProductApiService ) { }
 
   ngOnInit(): void {
     this.registrationForm = new FormGroup({
@@ -18,7 +20,6 @@ export class RegistrationFormComponent implements OnInit {
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(10),
-        // Aquí debes agregar la validación personalizada para verificar la unicidad del ID
       ]),
       'nombre': new FormControl(null, [
         Validators.required,
@@ -33,11 +34,9 @@ export class RegistrationFormComponent implements OnInit {
       'logo': new FormControl(null, Validators.required),
       'fecha_liberacion': new FormControl(null, [
         Validators.required,
-        // Aquí debes agregar la validación personalizada para verificar que la fecha sea igual o mayor a la fecha actual
       ]),
       'fecha_revision': new FormControl(null, [
         Validators.required,
-        // Aquí debes agregar la validación personalizada para verificar que la fecha sea exactamente un año después de la fecha de liberación
       ])
     });
   }
@@ -67,7 +66,12 @@ export class RegistrationFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.registrationForm);
+    this.productListSvc.postProduct(this.registrationForm.value).subscribe(
+      (product: Product) => {
+        console.log(product);
+      },
+      (error) => console.error('An error occurred:', error)
+    );
   }
 
 }

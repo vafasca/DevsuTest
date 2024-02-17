@@ -1,4 +1,3 @@
-/* Estilos de los campos */
 .campo {
     margin-bottom: 20px;
     display: flex;
@@ -16,7 +15,6 @@
     flex: 1;
 }
 
-/* Estilos de los botones */
 .botones {
     text-align: center;
     margin-top: 20px;
@@ -36,19 +34,17 @@
     background-color: yellow;
 }
 
-/* Estilos del formulario */
 .formulario {
     border: 1px solid #ccc;
     padding: 20px;
     width: 500px;
-    margin: 0 auto; /* Centrar el formulario horizontalmente */
-    text-align: center; /* Centrar el texto dentro del formulario */
+    margin: 0 auto;
+    text-align: center;
 }
 
 h1 {
-    /* Estilos del título */
-    margin-top: 0; /* Eliminar el margen superior predeterminado */
-    margin-bottom: 20px; /* Agregar margen inferior */
+    margin-top: 0;
+    margin-bottom: 20px;
 }
 
 .error {

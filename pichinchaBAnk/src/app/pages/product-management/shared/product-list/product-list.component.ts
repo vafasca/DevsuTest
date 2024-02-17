@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../../interfaces/product.interface';
 import { ProductApiService } from '../../services/product-api.service';
 import { take, catchError, throwError, Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -14,8 +15,10 @@ export class ProductListComponent implements OnInit {
   displayedProducts: Product[];
   filteredProducts: Product[];
   currentIndex: number;
+  isModalOpen: boolean = false;
+  selectedProductTitle: string = '';
 
-  constructor(private productListSvc: ProductApiService) {
+  constructor(private productListSvc: ProductApiService, private router: Router) {
     this.products = [];
     this.selectedValue = 5;
     this.displayedProducts = [];
@@ -75,11 +78,35 @@ export class ProductListComponent implements OnInit {
       this.updateDisplayedProducts();
     }
   }
-  
+
+  toggleDropdown(product: Product) {
+    product.showDropdown = !product.showDropdown;
+  }
+
+  editProduct(product: Product) {
+    console.log(JSON.stringify(product));
+    this.router.navigate(['/edit-product', product.id]);
+  }
+
+//modals
+openModal(product: Product) {
+  this.selectedProductTitle = product.name;
+  this.isModalOpen = true;
+}
+
+
+  closeModal() {
+    this.isModalOpen = false;
+  }
+
+  deleteProduct() {
+    this.closeModal();
+  }
 
   // Función para manejar errores
   private handleError(error: any): Observable<any> {
     console.error('An error occurred:', error);
     return throwError('Something bad happened; please try again later.');
   }
+
 }
