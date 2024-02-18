@@ -13,31 +13,44 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let product of displayedProducts">
-          <td><img src= "" alt="" /></td>
-          <td>{{ product.name }}</td>
-          <td>{{ product.description }}</td>
-          <td>{{ product.date_release }}</td>
-          <td>{{ product.date_revision }}</td>
-          <td id="actions" (click)="toggleDropdown(product)">:</td>
-    <td>
-      <div *ngIf="product.showDropdown" class="dropdown">
-        <div class="dropdown-content">
-          <button (click)="editProduct(product)" class="dropbtn">Editar</button>
-          <button (click)="openModal(product)" class="dropbtn">Eliminar</button>
-
-        </div>
-      </div>
-    </td>
+              <tr *ngFor="let product of displayedProducts">
+                  <td><img src="{{product.logo}}"
+                           alt=""/></td>
+                  <td>{{ product.name }}</td>
+                  <td>{{ product.description }}</td>
+                  <td>{{ product.date_release }}</td>
+                  <td>{{ product.date_revision }}</td>
+                  <td id="actions"
+                      (click)="toggleDropdown(product)">:
+                  </td>
+                  <td>
+                    <div *ngIf="product.showDropdown"
+                         class="dropdown">
+                      <div class="dropdown-content">
+                        <button (click)="editProduct(product)"
+                                class="dropbtn">Editar
+                        </button>
+                        <button (click)="openModal(product)"
+                                class="dropbtn">Eliminar
+                        </button>
+              </div>
+            </div>
+          </td>
         </tr>
       </tbody>
     </table>
     <br />
     <div class="button-container">
       <label>Resultados: {{ displayedProducts.length }}</label>
-      <button class="button" (click)="showPrevious()">Anterior</button>
-      <button class="button" (click)="showNext()">Siguiente</button>
-      <select class="button" [(ngModel)]="selectedValue" (change)="onValueChange($event)">
+            <button class="button-design"
+              (click)="showPrevious()">Anterior
+      </button>
+      <button class="button-design"
+              (click)="showNext()">Siguiente
+      </button>
+      <select class="select-design"
+              [(ngModel)]="selectedValue"
+              (change)="onValueChange($event)">
         <option value="5">5</option>
         <option value="10">10</option>
         <option value="20">20</option>
@@ -46,13 +59,19 @@
   </div>
 </div>
 <!-- Modal -->
-<div class="modal" [class.show]="isModalOpen">
+<div class="modal"
+      [class.show]="isModalOpen">
   <div class="modal-content">
-    <span class="close" (click)="closeModal()">&times;</span>
+    <span class="close"
+            (click)="closeModal()">&times;</span>
     <p>¿Estás seguro de eliminar el producto {{ selectedProductTitle }}?</p>
     <div class="button-container">
-      <button class="button cancel" (click)="closeModal()">Cancelar</button>
-      <button class="button confirm" (click)="deleteProduct()">Confirmar</button>
+      <button class="button cancel"
+                (click)="closeModal()">Cancelar
+      </button>
+      <button class="button confirm"
+                (click)="deleteProduct()">Confirmar
+      </button>
     </div>
   </div>
 </div>

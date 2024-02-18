@@ -1,4 +1,4 @@
-.button-design{
+.select-design{
     justify-self: end;
     outline: none;
     border: 0;
@@ -8,11 +8,11 @@
     background-color: rgb(255, 196, 0);
     font-weight: bold;
     cursor: pointer;
-    width: 150px;
+    width: 100px;
   }
-  .button-design:focus{
+  .select-design:focus{
     background-color: rgb(255, 221, 0);
   }
-  .button-design:hover{
+  .select-design:hover{
     background-color: rgb(255, 221, 0);
   }

@@ -22,21 +22,28 @@
 
 .product-table td {
   padding: 15px 0px;
+  position: relative;
+}
+
+.product-table img {
+  max-width: 50px;
+  max-height: 50px;
+  border-radius: 50%;
 }
 
 .button {
   margin: 0;
   padding: 10px 20px;
   font-size: 14px;
-  background-color: #4caf50;
-  color: white;
+  background-color: rgb(255, 196, 0);
+  color: rgb(0, 0, 0);
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
 .button:hover {
-  background-color: #45a049;
+  background-color: rgb(255, 196, 0);
 }
 
 .button-container {
