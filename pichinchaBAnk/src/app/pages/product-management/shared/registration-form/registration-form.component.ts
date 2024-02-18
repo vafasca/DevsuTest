@@ -180,28 +180,46 @@ export class RegistrationFormComponent implements OnInit {
    * Maneja el envío de datos a actualizar o registrar del formulario.
    */
   onSubmit(): void {
-    if (this.productId) {
-      this.productListSvc.updateProduct(this.registrationForm.value).subscribe(
-        (product: Product) => {
-          this.toastr.success('Producto actualizado correctamente');
-          this.router.navigate(['/products']);
-        },
-        (error) => {
-          console.error('Error al actualizar el producto:', error);
-          this.toastr.error('Ocurrió un error al actualizar el producto');
+    const productId = this.registrationForm.get('id')!.value;
+    
+    this.productListSvc.verify(productId).subscribe(
+      (product: Product) => {
+        if (product) {
+          // Si el producto ya existe, mostrar un mensaje de error y limpiar el campo ID
+          this.toastr.error('Ya existe un producto con este ID');
+          this.registrationForm.get('id')!.setValue(''); // Limpiar el campo ID
+        } else {
+          // Si no hay ningún producto con ese ID, proceder con la creación o actualización
+          if (this.productId) {
+            this.productListSvc.updateProduct(this.registrationForm.value).subscribe(
+              (product: Product) => {
+                this.toastr.success('Producto actualizado correctamente');
+                this.router.navigate(['/products']);
+              },
+              (error) => {
+                console.error('Error al actualizar el producto:', error);
+                this.toastr.error('Ocurrió un error al actualizar el producto');
+              }
+            );
+          } else {
+            this.productListSvc.postProduct(this.registrationForm.value).subscribe(
+              (product: Product) => {
+                this.toastr.success('Producto agregado correctamente');
+                this.router.navigate(['/products']);
+              },
+              (error) => {
+                console.error('Error al agregar el producto:', error);
+                this.toastr.error('Ocurrió un error al agregar el producto');
+              }
+            );
+          }
         }
-      );
-    } else {
-      this.productListSvc.postProduct(this.registrationForm.value).subscribe(
-        (product: Product) => {
-          this.toastr.success('Producto agregado correctamente');
-          this.router.navigate(['/products']);
-        },
-        (error) => {
-          console.error('Error al agregar el producto:', error);
-          this.toastr.error('Ocurrió un error al agregar el producto');
-        }
-      );
-    }
+      },
+      (error) => {
+        console.error('Error al verificar el producto:', error);
+        this.toastr.error('Ocurrió un error al verificar el producto');
+      }
+    );
   }
+  
 }
