@@ -83,22 +83,16 @@
           </div>
         </div>
 
-        <!-- Campo para Fecha de Revisión -->
-        <div class="campo">
-          <label for="date_revision">Fecha de Revisión:</label>
-          <input
-            type="date"
-            id="fecha_revision"
-            formControlName="date_revision"
-            [value]="
-              registrationForm.get('date_revision')?.value | customDateFormat
-            "
-            [ngClass]="{'error-border': registrationForm.get('date_revision')?.touched && registrationForm.get('date_revision')?.hasError('required')}" 
-          />
-          <div *ngIf="registrationForm.get('date_revision')?.touched && registrationForm.get('date_revision')?.hasError('required')" class="error">
-            Este campo es obligatorio.
-          </div>
-        </div>
+<!-- Campo para Fecha de Revisión -->
+<div class="campo">
+  <label for="date_revision">Fecha de Revisión:</label>
+  <input
+    type="date"
+    id="fecha_revision"
+    formControlName="date_revision"
+    [readonly]="isEditModeDate()"
+  />
+</div>
 
         <!-- Botones -->
       </div>
