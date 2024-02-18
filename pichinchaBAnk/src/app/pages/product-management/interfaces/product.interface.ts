@@ -5,7 +5,7 @@ export interface Product{
     name:string;
     description: string;
     logo: string;
-    date_release: string;
-    date_revision: string;
+    date_release: Date;
+    date_revision: Date;
     showDropdown?: boolean;
 }

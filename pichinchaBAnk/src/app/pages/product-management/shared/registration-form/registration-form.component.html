@@ -58,6 +58,7 @@
           type="date"
           id="fecha_liberacion"
           formControlName="date_release"
+          [value]="registrationForm.get('date_release')?.value | customDateFormat"
         />
         <div
           *ngIf="
@@ -73,6 +74,7 @@
           type="date"
           id="fecha_revision"
           formControlName="date_revision"
+          [value]="registrationForm.get('date_revision')?.value | customDateFormat"
         />
         <div
           *ngIf="

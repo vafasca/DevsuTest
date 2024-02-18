@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  AbstractControl,
+} from '@angular/forms';
 import { ProductApiService } from '../../services/product-api.service';
 import { Product } from '../../interfaces/product.interface';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -7,50 +12,46 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-registration-form',
   templateUrl: './registration-form.component.html',
-  styleUrls: ['./registration-form.component.css']
+  styleUrls: ['./registration-form.component.css'],
 })
 export class RegistrationFormComponent implements OnInit {
-
   registrationForm!: FormGroup;
 
   productId!: string;
 
-  constructor(private productListSvc: ProductApiService, private router: Router, private route: ActivatedRoute) { }
+  constructor(
+    private productListSvc: ProductApiService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      console.log("id"+this.productId);
+    this.route.params.subscribe((params) => {
       this.productId = params['id'] as string;
-      console.log("id"+this.productId);
-      //this.productId="trj-crd25"
       if (this.productId) {
         this.getProductDetails(this.productId.toString());
       }
     });
 
     this.registrationForm = new FormGroup({
-      'id': new FormControl(null, [
+      id: new FormControl(null, [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(10),
       ]),
-      'name': new FormControl(null, [
+      name: new FormControl(null, [
         Validators.required,
         Validators.minLength(5),
-        Validators.maxLength(100)
+        Validators.maxLength(100),
       ]),
-      'description': new FormControl(null, [
+      description: new FormControl(null, [
         Validators.required,
         Validators.minLength(10),
-        Validators.maxLength(200)
+        Validators.maxLength(200),
       ]),
-      'logo': new FormControl(null, Validators.required),
-      'date_release': new FormControl(null, [
-        Validators.required,
-      ]),
-      'date_revision': new FormControl(null, [
-        Validators.required,
-      ])
+      logo: new FormControl(null, Validators.required),
+      date_release: new FormControl(null, [Validators.required]),
+      date_revision: new FormControl(null, [Validators.required]),
     });
   }
 
@@ -79,24 +80,38 @@ export class RegistrationFormComponent implements OnInit {
   }
 
   getProductDetails(productId: string) {
-    console.log("ejecitasdadasddddano");
-    console.log(productId);
-    // No es necesario convertir a cadena, productId ya es un número
-    this.productListSvc.getProduct(productId.toString()).subscribe(
-      (product: Product) => {
-        this.registrationForm.patchValue(product); // Llena el formulario con los detalles del producto
+    console.log('Ejecutando getProductDetails');
+    console.log('ID del producto: ' + productId);
+
+    // Llamada al servicio para obtener la lista completa de productos
+    this.productListSvc.getProducts().subscribe(
+      (products: Product[]) => {
+        // Buscar el producto con el ID correspondiente en la lista
+        const product = products.find((p) => p.id === productId);
+
+        if (product) {
+          // Si se encuentra el producto, llenar el formulario con sus detalles
+          this.registrationForm.patchValue(product);
+        } else {
+          console.error('Producto no encontrado');
+        }
       },
-      (error) => console.error('An error occurred:', error)
+      (error) =>
+        console.error(
+          'Ocurrió un error al obtener la lista de productos:',
+          error
+        )
     );
   }
 
-
   onSubmit() {
+    console.log('onSubmit');
+    this.productListSvc.verify('asda');
     if (this.productId) {
-      this.productListSvc.updateProduct(this.productId.toString(), this.registrationForm.value).subscribe(
+      this.productListSvc.updateProduct(this.registrationForm.value).subscribe(
         (product: Product) => {
           console.log(product);
-          alert("Producto actualizado correctamente");
+          alert('Producto actualizado correctamente');
           this.router.navigate(['/products']);
         },
         (error) => console.error('An error occurred:', error)
@@ -105,13 +120,11 @@ export class RegistrationFormComponent implements OnInit {
       this.productListSvc.postProduct(this.registrationForm.value).subscribe(
         (product: Product) => {
           console.log(product);
-          alert("Producto agregado correctamente");
+          alert('Producto agregado correctamente');
           this.router.navigate(['/products']);
         },
         (error) => console.error('An error occurred:', error)
       );
     }
   }
-  
-
 }

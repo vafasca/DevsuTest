@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './shared/header/header.component';
 import { SharedModule } from './shared/shared-module/shared.module';
+import { CustomDateFormatPipe } from './shared/pipes/custom-date-format.pipe';
 
 @NgModule({
   declarations: [
