@@ -1,18 +1,38 @@
-.button-design{
-    justify-self: end;
-    outline: none;
-    border: 0;
-    border: solid 1.5px rgb(196, 194, 194);
-    padding: 10px 7px;
-    border-radius: 5px;
-    background-color: rgb(255, 196, 0);
-    font-weight: bold;
-    cursor: pointer;
-    width: 150px;
-  }
-  .button-design:focus{
-    background-color: rgb(255, 221, 0);
-  }
-  .button-design:hover{
-    background-color: rgb(255, 221, 0);
-  }
+.button-design {
+  justify-self: end;
+  outline: none;
+  border: 0;
+  border: solid 1.5px rgb(196, 194, 194);
+  padding: 10px 7px;
+  border-radius: 5px;
+  background-color: rgb(255, 196, 0);
+  font-weight: bold;
+  cursor: pointer;
+  width: 150px;
+}
+.button-design:focus {
+  background-color: rgb(255, 221, 0);
+}
+.button-design:hover {
+  background-color: rgb(255, 221, 0);
+}
+
+.button-reset-design {
+  outline: none;
+  border: 0;
+  /* border: solid 1.5px rgb(127, 222, 254); */
+  padding: 10px 7px;
+  border-radius: 5px;
+  background-color: rgb(228, 245, 255);
+  color: rgb(0, 0, 131);
+  font-weight: bold;
+  cursor: pointer;
+  width: 150px;
+}
+
+.button-reset-design:focus {
+  background-color: rgb(163, 219, 249);
+}
+.button-reset-design:hover {
+  background-color: rgb(163, 219, 249);
+}

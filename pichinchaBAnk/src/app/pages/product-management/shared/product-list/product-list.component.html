@@ -15,9 +15,9 @@
           <th></th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="body-cicle">
               <!-- Ciclo sobre los productos a mostrar -->
-              <tr *ngFor="let product of displayedProducts">
+              <tr *ngFor="let product of displayedProducts; let i = index">
                   <td><img src="{{product.logo}}"
                            alt=""/></td>
                   <td>{{ product.name }}</td>
@@ -40,27 +40,23 @@
               </div>
             </div>
           </td>
-        </tr>
+              </tr>
       </tbody>
     </table>
     <br />
     <!-- Navegación y opciones de resultados -->
     <div class="button-container">
       <label>Resultados: {{ displayedProducts.length }}</label>
-            <button class="button-design"
-              (click)="showPrevious()">Anterior
-      </button>
-      <button class="button-design"
-              (click)="showNext()">Siguiente
-      </button>
-      <select class="select-design"
-              [(ngModel)]="selectedValue"
-              (change)="onValueChange($event)">
+      <button class="button-design" (click)="showPrevious()">Anterior</button>
+      <span>Página: {{ currentPage }} / {{ totalPages }}</span>
+      <button class="button-design" (click)="showNext()">Siguiente</button>
+      <select class="select-design" [(ngModel)]="selectedValue" (change)="onValueChange($event)">
         <option value="5">5</option>
         <option value="10">10</option>
         <option value="20">20</option>
       </select>
     </div>
+
   </div>
 </div>
 

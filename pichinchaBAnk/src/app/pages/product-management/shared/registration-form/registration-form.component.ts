@@ -61,6 +61,11 @@ export class RegistrationFormComponent implements OnInit {
     });
   }
 
+  isEditMode(): boolean {
+    return !!this.productId;
+  }
+  
+
   /**
    * Getter para el campo ID del formulario.
    * @returns Control de formulario para el campo ID.

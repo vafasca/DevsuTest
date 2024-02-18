@@ -22,6 +22,8 @@ export class ProductListComponent implements OnInit {
   isModalOpen: boolean = false;
   selectedProductTitle: string = '';
   activeDropdown: Product | null = null;
+  currentPage: number = 1;
+  totalPages!: number;
 
   // Constructor
   constructor(
@@ -46,6 +48,7 @@ export class ProductListComponent implements OnInit {
    * @param event El evento de cambio.
    */
   onValueChange(event: Event) {
+    this.currentIndex = 0; // Reinicia currentIndex a 0 cuando cambia el valor
     this.updateDisplayedProducts();
   }
 
@@ -91,6 +94,8 @@ export class ProductListComponent implements OnInit {
    * Actualiza los productos mostrados en la vista.
    */
   private updateDisplayedProducts(): void {
+    this.totalPages = Math.ceil(this.products.length / this.selectedValue);
+    this.currentPage = Math.ceil((this.currentIndex + 1) / this.selectedValue);
     this.displayedProducts = this.products.slice(
       this.currentIndex,
       this.currentIndex + this.selectedValue

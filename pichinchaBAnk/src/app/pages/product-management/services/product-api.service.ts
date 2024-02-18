@@ -13,7 +13,7 @@ import { Product } from '../interfaces/product.interface';
 export class ProductApiService {
   private apiURL: string = 'https://tribu-ti-staffing-desarrollo-afangwbmcrhucqfh.z01.azurefd.net/ipf-msa-productosfinancieros/bp/products';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, ) {}
 
   /**
    * Obtiene la URL completa de la API.
@@ -40,8 +40,13 @@ export class ProductApiService {
    */
   public getProducts(): Observable<Product[]> {
     const headers = this.getHeaders();
-    return this.http.get<Product[]>(this.getFullURL(), { headers });
+    return this.http.get<Product[]>(this.getFullURL(), { headers }).pipe(
+      catchError(error => {
+        throw 'Error al obtener los productos'; // Puedes personalizar este mensaje según tus necesidades
+      })
+    );
   }
+
 
   /**
    * Crea un nuevo producto.
@@ -50,7 +55,11 @@ export class ProductApiService {
    */
   public postProduct(product: Product): Observable<Product> {
     const headers = this.getHeaders();
-    return this.http.post<Product>(this.getFullURL(), product, { headers });
+    return this.http.post<Product>(this.getFullURL(), product, { headers }).pipe(
+      catchError(error => {
+        throw 'Error al agregar el producto';
+      })
+    );
   }
 
   /**
@@ -60,7 +69,11 @@ export class ProductApiService {
    */
   public updateProduct(product: Product): Observable<Product> {
     const headers = this.getHeaders();
-    return this.http.put<Product>(this.getFullURL(), product, { headers });
+    return this.http.put<Product>(this.getFullURL(), product, { headers }).pipe(
+      catchError(error => {
+        throw 'Error al agregar el producto';
+      })
+    );
   }
 
   /**
@@ -72,14 +85,19 @@ export class ProductApiService {
     const headers = this.getHeaders();
     return this.http.delete(`${this.getFullURL()}?id=${id}`, { headers, responseType: 'text' }).pipe(
       map(response => {
-        try {
-          return JSON.parse(response);
-        } catch (error) {
-          return response;
-        }
+        // Analizar la respuesta de texto para determinar el caso
+        const jsonResponse = { message: response };
+        return jsonResponse;
       }),
       catchError(error => {
-        throw 'Error al eliminar el producto'; // Manejo de errores mejorado
+        // Manejar los errores de manera más específica
+        if (error.status === 400) {
+          throw 'Error: header "authorId" is missing';
+        } else if (error.status === 404) {
+          throw 'Error: Product not found with that id';
+        } else {
+          throw 'Error al eliminar el producto';
+        }
       })
     );
   }

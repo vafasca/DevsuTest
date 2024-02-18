@@ -1,130 +1,129 @@
-<app-header></app-header> <!-- Componente de encabezado -->
+<app-header></app-header>
+<!-- Componente de encabezado -->
 
 <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
   <div class="container">
     <div class="formulario">
-      <h1>Formulario de Registro</h1> <!-- Título del formulario -->
-      <hr /> <!-- Línea divisoria -->
-
-      <!-- Campo para ID -->
-      <div class="campo">
-        <label for="id">ID:</label>
-        <input type="text" id="id" formControlName="id" />
-        <div
-          *ngIf="
-            registrationForm.controls['id'].invalid &&
-            registrationForm.controls['id'].touched
-          "
-          class="error"
-        >
-          ID no válido!
-        </div>
+      <div class="form-title">
+        <h1>Formulario de Registro</h1>
       </div>
+      <!-- Título del formulario -->
+      <hr />
+      <!-- Línea divisoria -->
 
-      <!-- Campo para Nombre -->
-      <div class="campo">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" formControlName="name" />
-        <div
-          *ngIf="
-            registrationForm.controls['name'].invalid &&
-            registrationForm.controls['name'].touched
-          "
-          class="error"
-        >
-          Nombre no válido!
+      <div class="form-fields">
+        <!-- Campo para ID -->
+        <div class="campo">
+          <label for="id">ID:</label>
+          <input type="text" id="id" formControlName="id" [readonly]="isEditMode()" [ngClass]="{'error-border': registrationForm.get('id')?.touched && (registrationForm.get('id')?.hasError('required') || registrationForm.get('id')?.hasError('minlength') || registrationForm.get('id')?.hasError('maxlength'))}"/>
+          <div *ngIf="registrationForm.get('id')?.touched && registrationForm.get('id')?.hasError('required')" class="error">
+            Este campo es obligatorio.
+          </div>
+          <div *ngIf="registrationForm.get('id')?.hasError('minlength')" class="error">
+            El valor debe tener al menos 3 caracteres.
+          </div>
+          <div *ngIf="registrationForm.get('id')?.hasError('maxlength')" class="error">
+            El valor no debe tener más de 10 caracteres.
+          </div>
         </div>
-      </div>
 
-      <!-- Campo para Descripción -->
-      <div class="campo">
-        <label for="descripcion">Descripción:</label>
-        <input id="descripcion" formControlName="description" />
-        <div
-          *ngIf="
-            registrationForm.controls['description'].invalid &&
-            registrationForm.controls['description'].touched
-          "
-          class="error"
-        >
-          Descripción no válida!
+        <!-- Campo para Nombre -->
+        <div class="campo">
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" formControlName="name" [ngClass]="{'error-border': registrationForm.get('name')?.touched && (registrationForm.get('name')?.hasError('required') || registrationForm.get('name')?.hasError('minlength') || registrationForm.get('name')?.hasError('maxlength'))}" />
+          <div *ngIf="registrationForm.get('name')?.touched && registrationForm.get('name')?.hasError('required')" class="error">
+            Este campo es obligatorio.
+          </div>
+          <div *ngIf="registrationForm.get('name')?.hasError('minlength')" class="error">
+            El valor debe tener al menos 5 caracteres.
+          </div>
+          <div *ngIf="registrationForm.get('name')?.hasError('maxlength')" class="error">
+            El valor no debe tener más de 100 caracteres.
+          </div>
         </div>
-      </div>
 
-      <!-- Campo para Logo -->
-      <div class="campo">
-        <label for="logo">Logo:</label>
-        <input type="input" id="logo" formControlName="logo" />
-        <div
-          *ngIf="
-            registrationForm.controls['logo'].invalid &&
-            registrationForm.controls['logo'].touched
-          "
-          class="error"
-        >
-          Logo no válido!
+        <!-- Campo para Descripción -->
+        <div class="campo">
+          <label for="descripcion">Descripción:</label>
+          <input id="descripcion" formControlName="description" [ngClass]="{'error-border': registrationForm.get('description')?.touched && (registrationForm.get('description')?.hasError('required') || registrationForm.get('description')?.hasError('minlength') || registrationForm.get('description')?.hasError('maxlength'))}" />
+          <div *ngIf="registrationForm.get('description')?.touched && registrationForm.get('description')?.hasError('required')" class="error">
+            Este campo es obligatorio.
+          </div>
+          <div *ngIf="registrationForm.get('description')?.hasError('minlength')" class="error">
+            El valor debe tener al menos 10 caracteres.
+          </div>
+          <div *ngIf="registrationForm.get('description')?.hasError('maxlength')" class="error">
+            El valor no debe tener más de 200 caracteres.
+          </div>
         </div>
-      </div>
 
-      <!-- Campo para Fecha de Liberación -->
-      <div class="campo">
-        <label for="date_release">Fecha de Liberación:</label>
-        <input
-          type="date"
-          id="fecha_liberacion"
-          formControlName="date_release"
-          [value]="registrationForm.get('date_release')?.value | customDateFormat"
-        />
-        <div
-          *ngIf="
-            registrationForm.controls['date_release'].invalid &&
-            registrationForm.controls['date_release'].touched
-          "
-          class="error"
-        >
-          Fecha de liberación no válida!
+        <!-- Campo para Logo -->
+        <div class="campo">
+          <label for="logo">Logo:</label>
+          <input type="input" id="logo" formControlName="logo" [ngClass]="{'error-border': registrationForm.get('logo')?.touched && registrationForm.get('logo')?.hasError('required')}" />
+          <div *ngIf="registrationForm.get('logo')?.touched && registrationForm.get('logo')?.hasError('required')" class="error">
+            Este campo es obligatorio.
+          </div>
         </div>
-      </div>
 
-      <!-- Campo para Fecha de Revisión -->
-      <div class="campo">
-        <label for="date_revision">Fecha de Revisión:</label>
-        <input
-          type="date"
-          id="fecha_revision"
-          formControlName="date_revision"
-          [value]="registrationForm.get('date_revision')?.value | customDateFormat"
-        />
-        <div
-          *ngIf="
-            registrationForm.controls['date_revision'].invalid &&
-            registrationForm.controls['date_revision'].touched
-          "
-          class="error"
-        >
-          Fecha de revisión no válida!
+        <!-- Campo para Fecha de Liberación -->
+        <div class="campo">
+          <label for="date_release">Fecha de Liberación:</label>
+          <input
+            type="date"
+            id="fecha_liberacion"
+            formControlName="date_release"
+            [value]="
+              registrationForm.get('date_release')?.value | customDateFormat
+            "
+            [ngClass]="{'error-border': registrationForm.get('date_release')?.touched && registrationForm.get('date_release')?.hasError('required')}" 
+          />
+          <div *ngIf="registrationForm.get('date_release')?.touched && registrationForm.get('date_release')?.hasError('required')" class="error">
+            Este campo es obligatorio.
+          </div>
         </div>
-      </div>
 
-      <!-- Botones -->
+        <!-- Campo para Fecha de Revisión -->
+        <div class="campo">
+          <label for="date_revision">Fecha de Revisión:</label>
+          <input
+            type="date"
+            id="fecha_revision"
+            formControlName="date_revision"
+            [value]="
+              registrationForm.get('date_revision')?.value | customDateFormat
+            "
+            [ngClass]="{'error-border': registrationForm.get('date_revision')?.touched && registrationForm.get('date_revision')?.hasError('required')}" 
+          />
+          <div *ngIf="registrationForm.get('date_revision')?.touched && registrationForm.get('date_revision')?.hasError('required')" class="error">
+            Este campo es obligatorio.
+          </div>
+        </div>
+
+        <!-- Botones -->
+      </div>
       <div class="botones">
         <!-- Botón de Reiniciar -->
-        <button
-          type="button"
-          class="reiniciar button-design"
-          (click)="registrationForm.reset()"
-        >
-          Reiniciar
-        </button>
+        <div class="button-reset">
+          <button
+            type="button"
+            class="reiniciar button-reset-design"
+            (click)="registrationForm.reset()"
+          >
+            Reiniciar
+          </button>
+        </div>
 
         <!-- Botón de Enviar -->
-        <button
-          type="submit"
-          class="enviar button-design"
-          [disabled]="!registrationForm.valid"
-        >
-          Enviar
-        </button>
+        <div class="button-send">
+          <button
+            type="submit"
+            class="button-design"
+            [disabled]="!registrationForm.valid"
+          >
+            Enviar
+          </button>
+        </div>
       </div>
     </div>
   </div>
