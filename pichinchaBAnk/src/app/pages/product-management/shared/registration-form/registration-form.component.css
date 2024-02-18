@@ -1,52 +1,62 @@
+/* Estilos para campos de formulario */
 .campo {
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
+    margin-bottom: 20px; /* Espacio entre campos */
+    display: flex; /* Alineación de elementos en línea */
+    align-items: center; /* Alineación vertical */
 }
 
+/* Estilos para etiquetas de campo */
 .campo label {
-    width: 120px;
-    margin-right: 20px;
+    width: 120px; /* Ancho fijo para etiquetas */
+    margin-right: 20px; /* Espacio a la derecha de la etiqueta */
 }
 
+/* Estilos para elementos de entrada de campo */
 .campo input,
 .campo textarea,
 .campo select {
-    flex: 1;
+    flex: 1; /* Ocupar espacio restante */
 }
 
+/* Estilos para botones */
 .botones {
-    text-align: center;
-    margin-top: 20px;
+    text-align: center; /* Alineación de texto centrada */
+    margin-top: 20px; /* Espacio superior */
 }
 
+/* Estilos para botones individuales */
 .botones button {
-    border: 1px solid #ccc;
-    padding: 8px 16px;
-    margin: 0 10px;
+    border: 1px solid #ccc; /* Borde del botón */
+    padding: 8px 16px; /* Relleno del botón */
+    margin: 0 10px; /* Margen entre botones */
 }
 
+/* Estilos para botón de reiniciar */
 .reiniciar {
-    background-color: #fff;
+    background-color: #fff; /* Fondo blanco */
 }
 
+/* Estilos para botón de enviar */
 .enviar {
-    background-color: yellow;
+    background-color: yellow; /* Fondo amarillo */
 }
 
+/* Estilos para el formulario */
 .formulario {
-    border: 1px solid #ccc;
-    padding: 20px;
-    width: 500px;
-    margin: 0 auto;
-    text-align: center;
+    border: 1px solid #ccc; /* Borde del formulario */
+    padding: 20px; /* Relleno del formulario */
+    width: 500px; /* Ancho fijo del formulario */
+    margin: 0 auto; /* Centrado horizontal */
+    text-align: center; /* Alineación de texto centrada */
 }
 
+/* Estilos para encabezado */
 h1 {
-    margin-top: 0;
-    margin-bottom: 20px;
+    margin-top: 0; /* Sin margen superior */
+    margin-bottom: 20px; /* Margen inferior */
 }
 
+/* Estilos para mensajes de error */
 .error {
-    color: red;
+    color: red; /* Color de texto rojo */
 }

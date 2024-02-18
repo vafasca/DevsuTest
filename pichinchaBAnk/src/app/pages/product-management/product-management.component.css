@@ -1,10 +1,12 @@
+/* Estilos para el contenedor de gestión de productos */
 .product-management-container {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+  height: 100%; /* Altura del contenedor al 100% del contenedor padre */
+  width: 100%; /* Ancho del contenedor al 100% del contenedor padre */
+  display: flex; /* Utiliza el modelo de caja flexible */
+  flex-direction: column; /* Dirección de diseño de columna */
 }
 
+/* Estilos para el área de gestión de productos */
 .product-management-products {
-  flex-grow: 1;
+  flex-grow: 1; /* El área de gestión de productos se expande para llenar el espacio restante */
 }

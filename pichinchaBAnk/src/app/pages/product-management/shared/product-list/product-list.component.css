@@ -1,9 +1,11 @@
+/* Contenedor del formulario */
 .form-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+/* Tabla de productos */
 .product-table {
   width: 100%;
   border-collapse: collapse;
@@ -13,11 +15,11 @@
 .product-table th {
   text-align: center;
   padding: 15px 5px;
-  background-color: #f2f2f2;
+  background-color: #f2f2f2; /* Color de fondo */
 }
 
 .product-table tr {
-  border-bottom: solid 0.5px rgb(196, 194, 194, 0.6);
+  border-bottom: solid 0.5px rgb(196, 194, 194, 0.6); /* Línea divisoria */
 }
 
 .product-table td {
@@ -25,47 +27,47 @@
   position: relative;
 }
 
+/* Imagen del producto */
 .product-table img {
   max-width: 50px;
   max-height: 50px;
-  border-radius: 50%;
+  border-radius: 50%; /* Bordes redondeados */
 }
 
+/* Estilo de botones */
 .button {
   margin: 0;
   padding: 10px 20px;
   font-size: 14px;
-  background-color: rgb(255, 196, 0);
-  color: rgb(0, 0, 0);
+  background-color: rgb(255, 196, 0); /* Color de fondo */
+  color: rgb(0, 0, 0); /* Color del texto */
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
 .button:hover {
-  background-color: rgb(255, 196, 0);
+  background-color: rgb(255, 196, 0); /* Cambio de color al pasar el ratón */
 }
 
+/* Contenedor de botones */
 .button-container {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
+  width: 80%; /* Ancho */
+  margin: 0 auto; /* Centrar horizontalmente */
 }
 
-/* Center buttons below table */
-.button-container {
-  width: 80%;
-  margin: 0 auto;
-}
-
-#actions{
+/* Acciones en la tabla */
+#actions {
   font-weight: bold;
   cursor: pointer;
 }
 
-/* Estilos del modal */
+/* Modal */
 .modal {
-  display: none;
+  display: none; /* Ocultar por defecto */
   position: fixed;
   z-index: 1;
   left: 0;
@@ -73,7 +75,7 @@
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.4); /* Fondo semi-transparente */
 }
 
 .modal-content {
@@ -99,33 +101,36 @@
   cursor: pointer;
 }
 
+/* Contenedor de botones del modal */
 .button-container {
   text-align: right;
 }
 
+/* Estilos de botones del modal */
 .button {
   margin-left: 10px;
 }
 
 .cancel {
-  background-color: rgb(78, 77, 77);
+  background-color: rgb(78, 77, 77); /* Color de fondo */
 }
 
 .confirm {
-  background-color: yellow;
-  color: #000000;
+  background-color: yellow; /* Color de fondo */
+  color: #000000; /* Color del texto */
 }
 
-/* Clase para mostrar el modal */
+/* Mostrar modal */
 .show {
   display: block;
 }
 
+/* Contenido del menú desplegable */
 .dropdown-content {
   display: flex;
   flex-direction: column;
   position: absolute;
-  background-color: #f2f2f2;
+  background-color: #f2f2f2; /* Color de fondo */
   z-index: 1;
 }
 
@@ -133,4 +138,3 @@
   flex: 1;
   margin: 5px 0;
 }
-

@@ -1,9 +1,12 @@
-<app-header></app-header>
+<app-header></app-header> <!-- Componente de encabezado -->
+
 <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
   <div class="container">
     <div class="formulario">
-      <h1>Formulario de Registro</h1>
-      <hr />
+      <h1>Formulario de Registro</h1> <!-- Título del formulario -->
+      <hr /> <!-- Línea divisoria -->
+
+      <!-- Campo para ID -->
       <div class="campo">
         <label for="id">ID:</label>
         <input type="text" id="id" formControlName="id" />
@@ -16,6 +19,10 @@
         >
           ID no válido!
         </div>
+      </div>
+
+      <!-- Campo para Nombre -->
+      <div class="campo">
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" formControlName="name" />
         <div
@@ -28,6 +35,8 @@
           Nombre no válido!
         </div>
       </div>
+
+      <!-- Campo para Descripción -->
       <div class="campo">
         <label for="descripcion">Descripción:</label>
         <input id="descripcion" formControlName="description" />
@@ -40,6 +49,10 @@
         >
           Descripción no válida!
         </div>
+      </div>
+
+      <!-- Campo para Logo -->
+      <div class="campo">
         <label for="logo">Logo:</label>
         <input type="input" id="logo" formControlName="logo" />
         <div
@@ -52,6 +65,8 @@
           Logo no válido!
         </div>
       </div>
+
+      <!-- Campo para Fecha de Liberación -->
       <div class="campo">
         <label for="date_release">Fecha de Liberación:</label>
         <input
@@ -69,6 +84,10 @@
         >
           Fecha de liberación no válida!
         </div>
+      </div>
+
+      <!-- Campo para Fecha de Revisión -->
+      <div class="campo">
         <label for="date_revision">Fecha de Revisión:</label>
         <input
           type="date"
@@ -86,19 +105,22 @@
           Fecha de revisión no válida!
         </div>
       </div>
+
+      <!-- Botones -->
       <div class="botones">
+        <!-- Botón de Reiniciar -->
         <button
           type="button"
-          class="reiniciar"
-          class="button-design"
+          class="reiniciar button-design"
           (click)="registrationForm.reset()"
         >
           Reiniciar
         </button>
+
+        <!-- Botón de Enviar -->
         <button
           type="submit"
-          class="enviar"
-          class="button-design"
+          class="enviar button-design"
           [disabled]="!registrationForm.valid"
         >
           Enviar

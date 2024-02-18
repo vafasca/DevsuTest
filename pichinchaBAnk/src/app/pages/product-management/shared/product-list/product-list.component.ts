@@ -4,12 +4,16 @@ import { ProductApiService } from '../../services/product-api.service';
 import { take, catchError, throwError, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
+/**
+ * Componente para mostrar una lista de productos.
+ */
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent implements OnInit {
+  // Propiedades
   products: Product[];
   selectedValue: number;
   displayedProducts: Product[];
@@ -19,6 +23,7 @@ export class ProductListComponent implements OnInit {
   selectedProductTitle: string = '';
   activeDropdown: Product | null = null;
 
+  // Constructor
   constructor(
     private productListSvc: ProductApiService,
     private router: Router
@@ -30,14 +35,25 @@ export class ProductListComponent implements OnInit {
     this.currentIndex = 0;
   }
 
+  // Ciclo de vida: OnInit
   ngOnInit(): void {
     this.getProductList();
   }
 
+  // Evento: Cambio de valor en el selector de cantidad
+  /**
+   * Maneja el evento de cambio de valor en el selector de cantidad.
+   * @param event El evento de cambio.
+   */
   onValueChange(event: Event) {
     this.updateDisplayedProducts();
   }
 
+  // Evento: Búsqueda
+  /**
+   * Maneja el evento de búsqueda.
+   * @param term El término de búsqueda.
+   */
   onSearch(term: string) {
     if (term.trim() === '') {
       this.displayedProducts = [...this.products.slice(0, this.selectedValue)];
@@ -53,6 +69,10 @@ export class ProductListComponent implements OnInit {
     }
   }
 
+  // Método privado: Obtener lista de productos
+  /**
+   * Obtiene la lista de productos desde el servicio.
+   */
   private getProductList(): void {
     this.productListSvc
       .getProducts()
@@ -66,6 +86,10 @@ export class ProductListComponent implements OnInit {
       );
   }
 
+  // Método privado: Actualizar productos mostrados
+  /**
+   * Actualiza los productos mostrados en la vista.
+   */
   private updateDisplayedProducts(): void {
     this.displayedProducts = this.products.slice(
       this.currentIndex,
@@ -73,6 +97,10 @@ export class ProductListComponent implements OnInit {
     );
   }
 
+  // Método: Mostrar productos anteriores
+  /**
+   * Muestra los productos anteriores en la lista.
+   */
   showPrevious() {
     if (this.currentIndex - this.selectedValue >= 0) {
       this.currentIndex -= this.selectedValue;
@@ -80,6 +108,10 @@ export class ProductListComponent implements OnInit {
     }
   }
 
+  // Método: Mostrar productos siguientes
+  /**
+   * Muestra los productos siguientes en la lista.
+   */
   showNext() {
     if (this.currentIndex + this.selectedValue < this.products.length) {
       this.currentIndex += this.selectedValue;
@@ -87,6 +119,11 @@ export class ProductListComponent implements OnInit {
     }
   }
 
+  // Método: Alternar menú desplegable
+  /**
+   * Alterna la visibilidad del menú desplegable para un producto dado.
+   * @param product El producto para el cual se desea alternar el menú desplegable.
+   */
   toggleDropdown(product: Product) {
     if (this.activeDropdown) {
       this.activeDropdown.showDropdown = false;
@@ -96,20 +133,37 @@ export class ProductListComponent implements OnInit {
     this.activeDropdown = product.showDropdown ? product : null;
   }
 
+  // Método: Editar producto
+  /**
+   * Navega a la página de edición de un producto.
+   * @param product El producto que se desea editar.
+   */
   editProduct(product: Product) {
     this.router.navigate(['products', 'registration', product.id]);
   }
 
-  //modals
+  // Método: Abrir modal
+  /**
+   * Abre un modal para mostrar detalles de un producto.
+   * @param product El producto del cual se mostrarán los detalles.
+   */
   openModal(product: Product) {
     this.selectedProductTitle = product.name;
     this.isModalOpen = true;
   }
 
+  // Método: Cerrar modal
+  /**
+   * Cierra el modal.
+   */
   closeModal() {
     this.isModalOpen = false;
   }
 
+  // Método: Eliminar producto
+  /**
+   * Elimina un producto.
+   */
   deleteProduct() {
     if (this.activeDropdown) {
       this.productListSvc
@@ -130,7 +184,12 @@ export class ProductListComponent implements OnInit {
     }
   }
 
-  // Función para manejar errores
+  // Método privado: Manejar errores
+  /**
+   * Maneja los errores de la aplicación.
+   * @param error El error que se ha producido.
+   * @returns Un observable con el error.
+   */
   private handleError(error: any): Observable<any> {
     console.error('An error occurred:', error);
     return throwError('Something bad happened; please try again later.');

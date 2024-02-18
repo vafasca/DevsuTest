@@ -3,20 +3,24 @@ import {
   FormGroup,
   FormControl,
   Validators,
-  AbstractControl,
 } from '@angular/forms';
 import { ProductApiService } from '../../services/product-api.service';
 import { Product } from '../../interfaces/product.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 
+/**
+ * Componente para el formulario de registro de productos.
+ */
 @Component({
   selector: 'app-registration-form',
   templateUrl: './registration-form.component.html',
   styleUrls: ['./registration-form.component.css'],
 })
 export class RegistrationFormComponent implements OnInit {
+  /** Formulario de registro */
   registrationForm!: FormGroup;
 
+  /** ID del producto */
   productId!: string;
 
   constructor(
@@ -26,6 +30,7 @@ export class RegistrationFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // Suscripción a los parámetros de la ruta
     this.route.params.subscribe((params) => {
       this.productId = params['id'] as string;
       if (this.productId) {
@@ -33,6 +38,7 @@ export class RegistrationFormComponent implements OnInit {
       }
     });
 
+    // Inicialización del formulario de registro
     this.registrationForm = new FormGroup({
       id: new FormControl(null, [
         Validators.required,
@@ -55,34 +61,59 @@ export class RegistrationFormComponent implements OnInit {
     });
   }
 
+  /**
+   * Getter para el campo ID del formulario.
+   * @returns Control de formulario para el campo ID.
+   */
   get id() {
     return this.registrationForm.get('id');
   }
 
+  /**
+   * Getter para el campo name del formulario.
+   * @returns Control de formulario para el campo name.
+   */
   get name() {
     return this.registrationForm.get('name');
   }
 
+  /**
+   * Getter para el campo description del formulario.
+   * @returns Control de formulario para el campo description.
+   */
   get description() {
     return this.registrationForm.get('description');
   }
 
+  /**
+   * Getter para el campo logo del formulario.
+   * @returns Control de formulario para el campo logo.
+   */
   get logo() {
     return this.registrationForm.get('logo');
   }
 
+  /**
+   * Getter para el campo date_release del formulario.
+   * @returns Control de formulario para el campo date_release.
+   */
   get date_release() {
     return this.registrationForm.get('date_release');
   }
 
+  /**
+   * Getter para el campo date_revision del formulario.
+   * @returns Control de formulario para el campo date_revision.
+   */
   get date_revision() {
     return this.registrationForm.get('date_revision');
   }
 
-  getProductDetails(productId: string) {
-    console.log('Ejecutando getProductDetails');
-    console.log('ID del producto: ' + productId);
-
+  /**
+   * Obtiene los detalles de un producto.
+   * @param productId ID del producto.
+   */
+  getProductDetails(productId: string): void {
     // Llamada al servicio para obtener la lista completa de productos
     this.productListSvc.getProducts().subscribe(
       (products: Product[]) => {
@@ -104,22 +135,24 @@ export class RegistrationFormComponent implements OnInit {
     );
   }
 
-  onSubmit() {
-    console.log('onSubmit');
+  /**
+   * Maneja el envio de datos a actualizar o registrar del formulario.
+   */
+  onSubmit(): void {
     this.productListSvc.verify('asda');
     if (this.productId) {
-      this.productListSvc.updateProduct(this.registrationForm.value).subscribe(
-        (product: Product) => {
-          console.log(product);
-          alert('Producto actualizado correctamente');
-          this.router.navigate(['/products']);
-        },
-        (error) => console.error('An error occurred:', error)
-      );
+      this.productListSvc
+        .updateProduct(this.registrationForm.value)
+        .subscribe(
+          (product: Product) => {
+            alert('Producto actualizado correctamente');
+            this.router.navigate(['/products']);
+          },
+          (error) => console.error('An error occurred:', error)
+        );
     } else {
       this.productListSvc.postProduct(this.registrationForm.value).subscribe(
         (product: Product) => {
-          console.log(product);
           alert('Producto agregado correctamente');
           this.router.navigate(['/products']);
         },

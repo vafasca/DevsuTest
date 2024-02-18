@@ -1,6 +1,9 @@
 <div class="container">
+  <!-- Componente de búsqueda de productos -->
   <app-search-product (search)="onSearch($event)"></app-search-product>
+
   <div>
+    <!-- Tabla de productos -->
     <table class="product-table">
       <thead>
         <tr>
@@ -13,13 +16,14 @@
         </tr>
       </thead>
       <tbody>
+              <!-- Ciclo sobre los productos a mostrar -->
               <tr *ngFor="let product of displayedProducts">
                   <td><img src="{{product.logo}}"
                            alt=""/></td>
                   <td>{{ product.name }}</td>
                   <td>{{ product.description }}</td>
-                  <td>{{ product.date_release }}</td>
-                  <td>{{ product.date_revision }}</td>
+                  <td>{{ product.date_release | date }}</td>
+                  <td>{{ product.date_revision | date }}</td>
                   <td id="actions"
                       (click)="toggleDropdown(product)">:
                   </td>
@@ -40,6 +44,7 @@
       </tbody>
     </table>
     <br />
+    <!-- Navegación y opciones de resultados -->
     <div class="button-container">
       <label>Resultados: {{ displayedProducts.length }}</label>
             <button class="button-design"
@@ -58,7 +63,8 @@
     </div>
   </div>
 </div>
-<!-- Modal -->
+
+<!-- Modal para confirmar eliminación -->
 <div class="modal"
       [class.show]="isModalOpen">
   <div class="modal-content">
