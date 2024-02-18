@@ -3,6 +3,7 @@ import { Product } from '../../interfaces/product.interface';
 import { ProductApiService } from '../../services/product-api.service';
 import { take, catchError, throwError, Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 /**
  * Componente para mostrar una lista de productos.
@@ -28,7 +29,8 @@ export class ProductListComponent implements OnInit {
   // Constructor
   constructor(
     private productListSvc: ProductApiService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {
     this.products = [];
     this.selectedValue = 5;
@@ -85,7 +87,7 @@ export class ProductListComponent implements OnInit {
           this.products = productList;
           this.updateDisplayedProducts();
         },
-        (error) => console.error('An error occurred:', error)
+        (error) => this.toastr.error('Ah ocurrido un error al obtener los productos')
       );
   }
 
@@ -181,10 +183,9 @@ export class ProductListComponent implements OnInit {
           () => {
             this.getProductList();
             this.closeModal();
-            alert("Product eliminado correctamente");
-            window.location.reload();
+            this.toastr.success("Product eliminado correctamente");
           },
-          (error) => console.error('An error occurred:', error)
+          (error) => this.toastr.error(error, 'Ah ocurrido un error')
         );
     }
   }
@@ -196,7 +197,7 @@ export class ProductListComponent implements OnInit {
    * @returns Un observable con el error.
    */
   private handleError(error: any): Observable<any> {
-    console.error('An error occurred:', error);
-    return throwError('Something bad happened; please try again later.');
+    this.toastr.error('Ah ocurrido un error');
+    return throwError('Algo sucedio, por favor intenta nueavmente.');
   }
 }

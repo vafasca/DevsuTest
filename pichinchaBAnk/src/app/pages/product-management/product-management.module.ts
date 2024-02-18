@@ -10,7 +10,6 @@ import { RegistrationFormComponent } from './shared/registration-form/registrati
 import { HeaderComponent } from 'src/app/shared/header/header.component';
 import { SharedModule } from 'src/app/shared/shared-module/shared.module';
 
-
 @NgModule({
   declarations: [
     ProductManagementComponent,

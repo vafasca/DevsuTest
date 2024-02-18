@@ -7,6 +7,7 @@ import {
 import { ProductApiService } from '../../services/product-api.service';
 import { Product } from '../../interfaces/product.interface';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 /**
  * Componente para el formulario de registro de productos.
@@ -26,7 +27,8 @@ export class RegistrationFormComponent implements OnInit {
   constructor(
     private productListSvc: ProductApiService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -64,7 +66,6 @@ export class RegistrationFormComponent implements OnInit {
   isEditMode(): boolean {
     return !!this.productId;
   }
-  
 
   /**
    * Getter para el campo ID del formulario.
@@ -119,24 +120,19 @@ export class RegistrationFormComponent implements OnInit {
    * @param productId ID del producto.
    */
   getProductDetails(productId: string): void {
-    // Llamada al servicio para obtener la lista completa de productos
     this.productListSvc.getProducts().subscribe(
       (products: Product[]) => {
-        // Buscar el producto con el ID correspondiente en la lista
         const product = products.find((p) => p.id === productId);
-
         if (product) {
-          // Si se encuentra el producto, llenar el formulario con sus detalles
           this.registrationForm.patchValue(product);
         } else {
-          console.error('Producto no encontrado');
+          this.toastr.error('Producto no encontrado');
         }
       },
-      (error) =>
-        console.error(
-          'Ocurrió un error al obtener la lista de productos:',
-          error
-        )
+      (error) => {
+        console.error('Error al obtener la lista de productos:', error);
+        this.toastr.error('Ocurrió un error al obtener la lista de productos');
+      }
     );
   }
 
@@ -144,24 +140,27 @@ export class RegistrationFormComponent implements OnInit {
    * Maneja el envio de datos a actualizar o registrar del formulario.
    */
   onSubmit(): void {
-    this.productListSvc.verify('asda');
     if (this.productId) {
-      this.productListSvc
-        .updateProduct(this.registrationForm.value)
-        .subscribe(
-          (product: Product) => {
-            alert('Producto actualizado correctamente');
-            this.router.navigate(['/products']);
-          },
-          (error) => console.error('An error occurred:', error)
-        );
+      this.productListSvc.updateProduct(this.registrationForm.value).subscribe(
+        (product: Product) => {
+          this.toastr.success('Producto actualizado correctamente');
+          this.router.navigate(['/products']);
+        },
+        (error) => {
+          console.error('Error al actualizar el producto:', error);
+          this.toastr.error('Ocurrió un error al actualizar el producto');
+        }
+      );
     } else {
       this.productListSvc.postProduct(this.registrationForm.value).subscribe(
         (product: Product) => {
-          alert('Producto agregado correctamente');
+          this.toastr.success('Producto agregado correctamente');
           this.router.navigate(['/products']);
         },
-        (error) => console.error('An error occurred:', error)
+        (error) => {
+          console.error('Error al agregar el producto:', error);
+          this.toastr.error('Ocurrió un error al agregar el producto');
+        }
       );
     }
   }

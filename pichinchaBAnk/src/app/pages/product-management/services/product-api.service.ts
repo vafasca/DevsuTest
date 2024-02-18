@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Product } from '../interfaces/product.interface';
+import { ToastrService } from 'ngx-toastr';
 
 /**
  * Servicio para interactuar con la API de productos.
@@ -13,7 +14,7 @@ import { Product } from '../interfaces/product.interface';
 export class ProductApiService {
   private apiURL: string = 'https://tribu-ti-staffing-desarrollo-afangwbmcrhucqfh.z01.azurefd.net/ipf-msa-productosfinancieros/bp/products';
 
-  constructor(private http: HttpClient, ) {}
+  constructor(private http: HttpClient, private toastr: ToastrService) {}
 
   /**
    * Obtiene la URL completa de la API.
@@ -42,7 +43,7 @@ export class ProductApiService {
     const headers = this.getHeaders();
     return this.http.get<Product[]>(this.getFullURL(), { headers }).pipe(
       catchError(error => {
-        throw 'Error al obtener los productos'; // Puedes personalizar este mensaje según tus necesidades
+        throw  this.toastr.error('Error al obtener los productos');
       })
     );
   }
@@ -57,7 +58,7 @@ export class ProductApiService {
     const headers = this.getHeaders();
     return this.http.post<Product>(this.getFullURL(), product, { headers }).pipe(
       catchError(error => {
-        throw 'Error al agregar el producto';
+        throw this.toastr.error('Error al agregar el producto');
       })
     );
   }
@@ -71,7 +72,7 @@ export class ProductApiService {
     const headers = this.getHeaders();
     return this.http.put<Product>(this.getFullURL(), product, { headers }).pipe(
       catchError(error => {
-        throw 'Error al agregar el producto';
+        throw this.toastr.error('Error al actualizar el producto');
       })
     );
   }
@@ -90,14 +91,7 @@ export class ProductApiService {
         return jsonResponse;
       }),
       catchError(error => {
-        // Manejar los errores de manera más específica
-        if (error.status === 400) {
-          throw 'Error: header "authorId" is missing';
-        } else if (error.status === 404) {
-          throw 'Error: Product not found with that id';
-        } else {
-          throw 'Error al eliminar el producto';
-        }
+        throw this.toastr.error('Error al actualizar el producto');
       })
     );
   }

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 /**
  * Componente para la búsqueda de productos.
@@ -23,7 +24,6 @@ export class SearchProductComponent implements OnInit {
   onSearch(): void {
     // Emite el término de búsqueda
     this.search.emit(this.searchTerm.trim());
-    console.log(this.searchTerm);
   }
 
   /**
@@ -37,7 +37,10 @@ export class SearchProductComponent implements OnInit {
    * Constructor del componente.
    * @param router Instancia del enrutador de Angular.
    */
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private toastr: ToastrService
+    ) { }
 
   /**
    * Método del ciclo de vida de Angular: ngOnInit.

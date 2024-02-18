@@ -3,7 +3,7 @@
 @import "styles/design-input.css";
 @import "styles/container.css";
 @import "styles/design-select.css";
-
+@import 'ngx-toastr/toastr';
 html,
 body {
   height: 100%;
