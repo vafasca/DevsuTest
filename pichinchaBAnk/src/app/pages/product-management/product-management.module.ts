@@ -7,22 +7,23 @@ import { ProductListComponent } from './shared/product-list/product-list.compone
 import { SearchProductComponent } from './shared/search-product/search-product.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistrationFormComponent } from './shared/registration-form/registration-form.component';
-import { HeaderComponent } from 'src/app/shared/header/header.component';
 import { SharedModule } from 'src/app/shared/shared-module/shared.module';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
     ProductManagementComponent,
     ProductListComponent,
     SearchProductComponent,
-    RegistrationFormComponent
+    RegistrationFormComponent,
   ],
   imports: [
     CommonModule,
     ProductManagementRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    ToastrModule
   ]
 })
 export class ProductManagementModule { }

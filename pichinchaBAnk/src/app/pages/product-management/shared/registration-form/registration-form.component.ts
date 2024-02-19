@@ -181,7 +181,6 @@ export class RegistrationFormComponent implements OnInit {
    */
   onSubmit(): void {
     const productId = this.registrationForm.get('id')!.value;
-    
     this.productListSvc.verify(productId).subscribe(
       (product: Product) => {
         if (product) {
@@ -221,5 +220,4 @@ export class RegistrationFormComponent implements OnInit {
       }
     );
   }
-  
 }
